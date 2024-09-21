@@ -3,6 +3,7 @@ package org.rent_master.car_rental_reservation_system.models.business;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,23 +20,29 @@ import java.util.List;
 @Table(name = "rentals")
 public class Rental extends User {
 
+    @NotNull
     @NotBlank(message = "Company name is required")
     private String name;
 
+    @NotNull
     @NotBlank(message = "Your logotype image is required")
     private String logo;
 
+    @NotNull
     @NotBlank(message = "Owner name is required")
     private String owner;
 
+    @NotNull
     @NotBlank(message = "Your location is required")
     private String address1;
 
     private String address2;
 
+    @NotNull
     @NotBlank
     private String city;
 
+    @NotNull
     @NotBlank
     private String country;
 

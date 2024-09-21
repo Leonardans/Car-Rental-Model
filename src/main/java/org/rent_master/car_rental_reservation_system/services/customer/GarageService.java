@@ -32,7 +32,7 @@ public class GarageService {
         Optional<Garage> optionalGarage = garageRepository.findById(garageId);
         if (optionalGarage.isPresent()) {
             Garage garage = optionalGarage.get();
-            return garage.getCars();
+            return garage.getGarageCars();
         } else {
             throw new EntityNotFoundException("Garage not found with id: " + garageId);
         }
@@ -43,7 +43,7 @@ public class GarageService {
         Optional<Garage> optionalGarage = garageRepository.findById(garageId);
         if (optionalGarage.isPresent()) {
             Garage garage = optionalGarage.get();
-            garage.getCars().add(car);
+            garage.getGarageCars().add(car);
             garageRepository.save(garage);
         } else {
             throw new EntityNotFoundException("Garage not found with id: " + garageId);
@@ -55,7 +55,7 @@ public class GarageService {
         Optional<Garage> optionalGarage = garageRepository.findById(garageId);
         if (optionalGarage.isPresent()) {
             Garage garage = optionalGarage.get();
-            garage.getCars().removeIf(car -> car.getId().equals(carId));
+            garage.getGarageCars().removeIf(car -> car.getId().equals(carId));
             garageRepository.save(garage);
         } else {
             throw new EntityNotFoundException("Garage not found with id: " + garageId);

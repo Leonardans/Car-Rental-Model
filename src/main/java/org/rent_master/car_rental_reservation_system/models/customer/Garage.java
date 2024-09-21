@@ -28,12 +28,8 @@ public class Garage {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(
-            name = "garage_cars",
-            joinColumns = @JoinColumn(name = "garage_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id")
-    )
-    private List<Car> cars;
+
+    @Transient
+    private List<Car> garageCars;
 
 }

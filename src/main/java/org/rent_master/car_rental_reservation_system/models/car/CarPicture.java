@@ -2,6 +2,7 @@ package org.rent_master.car_rental_reservation_system.models.car;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class CarPicture {
     @JsonIgnore
     private Car car;
 
+    @NotNull
     @Column(name = "picture")
     private String picture;
 

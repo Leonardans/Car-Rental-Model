@@ -3,10 +3,12 @@ package org.rent_master.car_rental_reservation_system.models.customer;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.rent_master.car_rental_reservation_system.models.car.Car;
 import org.rent_master.car_rental_reservation_system.models.user.User;
 
 import java.util.List;
@@ -19,30 +21,30 @@ import java.util.List;
 @Table(name = "customers")
 public class Customer extends User {
 
+    @NotNull
     @NotBlank(message = " Blank is not allowed")
     private String firstName;
 
+    @NotNull
     @NotBlank(message = " Blank is not allowed")
     private String lastName;
 
+    @NotNull
     @NotBlank(message = " Blank is not allowed")
     private String address1;
 
     private String address2;
 
+    @NotNull
     @NotBlank(message = " Blank is not allowed")
     private String city;
 
+    @NotNull
     @NotBlank(message = " Blank is not allowed")
     private String country;
 
-    @NotBlank
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(
-            name = "customer_licences",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "licence_id")
-    )
-    private List<Licence> licences;
+
+    @Transient
+    private List<Licence> customerLicences;
 
 }

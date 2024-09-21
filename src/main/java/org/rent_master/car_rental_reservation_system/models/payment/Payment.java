@@ -34,13 +34,13 @@ public class Payment {
     private BigDecimal amount;
 
     @NotNull
-    @Column(name = "order_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "order_date", nullable = false)
     private LocalDateTime orderDate;
 
     @NotNull
-    @Column(name = "payment_date")
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 
     @NotNull
@@ -48,10 +48,12 @@ public class Payment {
     @Column(nullable = false)
     private PaymentStatus status;
 
+    @NotNull
     @NotBlank
     @Column(nullable = false)
     private String method;
 
+    @NotNull
     @NotBlank
     @Column
     private String comment;

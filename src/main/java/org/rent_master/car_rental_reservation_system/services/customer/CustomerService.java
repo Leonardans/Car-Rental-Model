@@ -128,7 +128,7 @@ public class CustomerService {
         customer.setRoles(Collections.singleton(rentalRole));
 
         Licence licence = optionalLicence.get();
-        customer.setLicences(Collections.singletonList(licence));
+        customer.setCustomerLicences(Collections.singletonList(licence));
 
         // Save Customer (this will also save User data)
         System.out.println(customer);
@@ -137,7 +137,7 @@ public class CustomerService {
         // Create and save Garage for the new customer
         Garage garage = new Garage();
         garage.setCustomer(customer);
-        garage.setCars(new ArrayList<>());
+        garage.setGarageCars(new ArrayList<>());
 
         // Save Garage
         this.garageService.save(garage);

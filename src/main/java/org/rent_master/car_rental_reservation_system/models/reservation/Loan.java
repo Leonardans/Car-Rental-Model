@@ -36,6 +36,7 @@ public class Loan {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfRental;
 
+    @NotNull
     @NotBlank
     @Max(value = 250, message = "No more than 250 characters")
     private String comments;

@@ -22,21 +22,24 @@ public class Branch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @NotBlank(message = "Your branch location is required")
     private String address1;
 
     private String address2;
 
+    @NotNull
     @NotBlank(message = "City is required")
     private String city;
 
+    @NotNull
     @NotBlank(message = "Country is required")
     private String country;
 
-    @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "rental_id", nullable = false)
     @NotNull(message = "Rental is required")
+    @ManyToOne
+    @JoinColumn(name = "rental_id", nullable = false)
     private Rental rental;
 
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL)

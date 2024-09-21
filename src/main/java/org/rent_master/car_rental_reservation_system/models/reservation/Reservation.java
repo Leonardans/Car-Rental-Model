@@ -45,11 +45,13 @@ public class Reservation {
 
     @NotNull
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="customer_id", nullable = false)
     private Customer customer;
 
     @NotNull
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 

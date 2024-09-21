@@ -27,14 +27,17 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "model_id")
     private CarModel carModel;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "body_type_Id")
     private BodyType bodyType;
@@ -43,6 +46,7 @@ public class Car {
     @Min(value = 1980, message = "To work for rent, the car must be a newer model")
     private Integer year;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "color_id")
     private CarColor carColor;
@@ -53,20 +57,23 @@ public class Car {
     @Min(value = 1, message = "Mileage can't be less")
     private Integer mileage;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Status status;
 
     @NotNull
     private BigDecimal amount;
 
-    @ManyToOne
     @JsonIgnore
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branch branch;
 
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CarPicture> pictures;
 
+    @NotNull
     @NotBlank(message = "City is required")
     private String city;
 
